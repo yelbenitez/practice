@@ -16,7 +16,7 @@ const FACT_ENTITY = "TypeOfHeavenlyBody"
 function WebHookQuery(req, res) {
     const agent = new WebhookClient({request: req, response: res});
     console.info(`agent set`);
-
+    
     const action = agent.action;
 
     switch (action){
@@ -28,6 +28,8 @@ function WebHookQuery(req, res) {
             agent.add('Our solar system has eight planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune')
             break;
     }
+
+    agent.handleRequest(action);
 }
 
 server.post('/', function(req,res){
